@@ -105,7 +105,7 @@ namespace Reactofus
             tbStatus.Text = text;
         }
 
-        public void SetProgressFromValues(long value, long total)
+        public void SetProgressFromValues(double value, double total)
         {
             var percentage = value / total * 100;
 
@@ -189,11 +189,28 @@ namespace Reactofus
             using (OpenFileDialog d = new OpenFileDialog())
             {
                 d.Filter = "ISO Files|*.iso|All Files|*.*";
-                    if(d.ShowDialog() == DialogResult.OK)
+
+                if (d.ShowDialog() == DialogResult.OK)
                 {
                     tbRamDiskISOPath.Text = d.FileName;
                 }
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Working)
+            {
+                var ans = MessageBox.Show("Are you sure that you want to exit?", "Reactofus", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (ans == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            Environment.Exit(0);
         }
     }
 }

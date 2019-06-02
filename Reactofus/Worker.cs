@@ -23,7 +23,7 @@ namespace Reactofus
 
             for (int i = 0; i < methods.Length; i++)
             {
-                Program.MainWnd.SetProgressFromValues(i, methods.Length);
+                Program.MainWnd.SetProgressFromValues(i + 1, methods.Length);
                 Program.MainWnd.SetStatus(GetFriendlyName(methods[i].Name));
 
                 try
@@ -55,7 +55,7 @@ namespace Reactofus
             var methods = worker.GetType().GetMethods();
 
             foreach (var method in methods)
-                if (method.ReturnType == typeof(bool))
+                if (method.ReturnType == worker.GetType())
                     result.Add(method);
 
             return result;
