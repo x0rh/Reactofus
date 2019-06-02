@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -70,9 +71,12 @@ namespace Reactofus
 
         public Form1()
         {
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+
             Program.MainWnd = this;
 
             InitializeComponent();
+            this.Text = $"Reactofus v{version}";
 
             UpdateDrivers();
         }
