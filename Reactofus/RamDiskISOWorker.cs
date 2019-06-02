@@ -28,7 +28,11 @@ namespace Reactofus
             ProcessStartInfo installer = new ProcessStartInfo();
             installer.FileName = installerFile.FullName;
             installer.Arguments = drive.Name[0] + ":" + " fat32";
+            installer.CreateNoWindow = true;
+            installer.UseShellExecute = false;
             Process.Start(installer).WaitForExit();
+
+            installerFile.Delete();
 
             return null;
         }

@@ -181,13 +181,16 @@
             // tbStatus
             // 
             this.tbStatus.Name = "tbStatus";
-            this.tbStatus.Size = new System.Drawing.Size(39, 17);
+            this.tbStatus.Size = new System.Drawing.Size(320, 17);
+            this.tbStatus.Spring = true;
             this.tbStatus.Text = "Ready";
+            this.tbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // statusProgress
             // 
             this.statusProgress.Name = "statusProgress";
-            this.statusProgress.Size = new System.Drawing.Size(100, 16);
+            this.statusProgress.Size = new System.Drawing.Size(145, 16);
+            this.statusProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // tbRamDiskISOPath
             // 
