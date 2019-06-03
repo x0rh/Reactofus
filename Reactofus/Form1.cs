@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -85,17 +86,14 @@ namespace Reactofus
         {
             cbAvailableDevices.Items.Clear();
 
-            var chooseDrive = new DriveInfoComboBoxItem(null);
+            var drives = DriveInfo.GetDrives().Where(x => x.DriveType == DriveType.Removable);
+
+            var chooseDrive = new DriveInfoComboBoxItem(drives.Count() >= 1 ? "Choose a drive" : "No drives found!");
             cbAvailableDevices.Items.Add(chooseDrive);
             cbAvailableDevices.SelectedItem = chooseDrive;
             
-            foreach (var drive in DriveInfo.GetDrives())
-            {
-                if (drive.DriveType == DriveType.Removable)
-                {
-                    cbAvailableDevices.Items.Add(new DriveInfoComboBoxItem(drive));
-                }
-            }
+            foreach (var drive in drives)
+                cbAvailableDevices.Items.Add(new DriveInfoComboBoxItem(drive));
         }
 
         public void SetStatus(string text)
