@@ -22,5 +22,17 @@ namespace Reactofus.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowAllDrives {
+            get {
+                return ((bool)(this["ShowAllDrives"]));
+            }
+            set {
+                this["ShowAllDrives"] = value;
+            }
+        }
     }
 }

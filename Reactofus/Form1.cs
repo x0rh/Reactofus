@@ -79,14 +79,19 @@ namespace Reactofus
             InitializeComponent();
             this.Text = $"Reactofus v{version}";
 
-            UpdateDrivers();
+            UpdateDrives();
         }
 
-        public void UpdateDrivers()
+        public void UpdateDrives()
         {
             cbAvailableDevices.Items.Clear();
 
-            var drives = DriveInfo.GetDrives().Where(x => x.DriveType == DriveType.Removable);
+            IEnumerable<DriveInfo> drives;
+
+            if (!Properties.Settings.Default.ShowAllDrives)
+                drives = DriveInfo.GetDrives().Where(x => x.DriveType == DriveType.Removable);
+            else
+                drives = DriveInfo.GetDrives();
 
             var chooseDrive = new DriveInfoComboBoxItem(drives.Count() >= 1 ? "Choose a drive" : "No drives found!");
             cbAvailableDevices.Items.Add(chooseDrive);
@@ -127,15 +132,6 @@ namespace Reactofus
             statusProgress.Style = style;
         }
 
-        private void linkLabelGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-            => Process.Start("https://github.com/feel-the-dz3n/Reactofus");
-
-        private void linkLabelBug_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-            => Process.Start("https://github.com/feel-the-dz3n/Reactofus/issues");
-
-        private void linkLabelUpdateDevices_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-            => UpdateDrivers();
-
         private void cbAvailableDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
             var item = (DriveInfoComboBoxItem)cbAvailableDevices.SelectedItem;
@@ -169,7 +165,7 @@ namespace Reactofus
                 if (!SelectedDriveIsFine())
                 {
                     MessageBox.Show("Selected drive is not fine");
-                    UpdateDrivers();
+                    UpdateDrives();
                     return;
                 }
 
@@ -214,5 +210,17 @@ namespace Reactofus
 
             Environment.Exit(0);
         }
+
+        private void cbAvailableDevices_DropDown(object sender, EventArgs e)
+            => UpdateDrives();
+
+        private void btnGitHub_Click(object sender, EventArgs e)
+            => Process.Start("https://github.com/feel-the-dz3n/Reactofus");
+
+        private void btnBugReport_Click(object sender, EventArgs e)
+            => Process.Start("https://github.com/feel-the-dz3n/Reactofus/issues");
+
+        private void btnSettings_Click(object sender, EventArgs e)
+            => new FormSettings().ShowDialog();
     }
 }
