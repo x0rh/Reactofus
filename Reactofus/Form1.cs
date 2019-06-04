@@ -105,7 +105,7 @@ namespace Reactofus
                 }
                 else if (value is DriveManagerDisk || value is DriveManagerLogicalDisk)
                 {
-                    linkSetDrive.Text = value.ToString();
+                    linkSetDrive.Text = value.GetName();
                     btnStartStop.Enabled = true;
 
                     if (value is DriveManagerDisk)
