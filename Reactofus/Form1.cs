@@ -55,15 +55,14 @@ namespace Reactofus
 
                 tabControl1.Enabled = !value;
                 cbFormatDrive.Enabled = !value;
+                linkSetDrive.Enabled = !value;
 
-                if (value)
+                if (value) 
                     btnStartStop.Text = "Abort";
                 else
                     btnStartStop.Text = "Start";
             }
         }
-
-        public DriveInfo SelectedDrive => ((DriveInfoComboBoxItem)cbAvailableDevices.SelectedItem).DriveInfo;
 
         public bool ForceFormatDrive
         {
@@ -79,26 +78,49 @@ namespace Reactofus
             InitializeComponent();
             this.Text = $"Reactofus v{version}";
 
-            UpdateDrives();
+            SelectedDrive = null;
         }
 
-        public void UpdateDrives()
+        private DriveManagerObject _selectedDrive = null;
+        public DriveManagerObject SelectedDrive
         {
-            cbAvailableDevices.Items.Clear();
+            get => _selectedDrive;
+            set
+            {
+                if (InvokeRequired)
+                {
+                    Invoke(new Action(() => SelectedDrive = value));
+                    return;
+                }
 
-            IEnumerable<DriveInfo> drives;
+                _selectedDrive = value;
 
-            if (!Properties.Settings.Default.ShowAllDrives)
-                drives = DriveInfo.GetDrives().Where(x => x.DriveType == DriveType.Removable);
-            else
-                drives = DriveInfo.GetDrives();
+                if (value == null)
+                {
+                    linkSetDrive.Text = "Select drive...";
 
-            var chooseDrive = new DriveInfoComboBoxItem(drives.Count() >= 1 ? "Choose a drive" : "No drives found!");
-            cbAvailableDevices.Items.Add(chooseDrive);
-            cbAvailableDevices.SelectedItem = chooseDrive;
-            
-            foreach (var drive in drives)
-                cbAvailableDevices.Items.Add(new DriveInfoComboBoxItem(drive));
+                    cbFormatDrive.Checked = false;
+                    cbFormatDrive.Enabled = false;
+                    btnStartStop.Enabled = false;
+                }
+                else if (value is DriveManagerDisk || value is DriveManagerLogicalDisk)
+                {
+                    linkSetDrive.Text = value.ToString();
+                    btnStartStop.Enabled = true;
+
+                    if (value is DriveManagerDisk)
+                    {
+                        cbFormatDrive.Checked = true;
+                        cbFormatDrive.Enabled = false;
+                    }
+                    else if (value is DriveManagerLogicalDisk)
+                    {
+                        cbFormatDrive.Checked = false;
+                        cbFormatDrive.Enabled = true;
+                    }
+                }
+                else throw new NotSupportedException();
+            }
         }
 
         public void SetStatus(string text)
@@ -132,46 +154,14 @@ namespace Reactofus
             statusProgress.Style = style;
         }
 
-        private void cbAvailableDevices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var item = (DriveInfoComboBoxItem)cbAvailableDevices.SelectedItem;
-
-            if (item.DriveInfo == null || !item.DriveInfo.IsReady)
-            {
-                cbPause.Enabled = false;
-                btnStartStop.Enabled = false;
-            }
-            else
-            {
-                cbPause.Enabled = true;
-                btnStartStop.Enabled = true;
-            }
-        }
-
-        public bool SelectedDriveIsFine()
-        {
-            var item = (DriveInfoComboBoxItem)cbAvailableDevices.SelectedItem;
-
-            if (item.DriveInfo != null && item.DriveInfo.IsReady)
-                return true;
-            else
-                return false;
-        }
-
         private void btnStartStop_Click(object sender, EventArgs e)
         {
             if (!Working)
             {
-                if (!SelectedDriveIsFine())
-                {
-                    MessageBox.Show("Selected drive is not fine");
-                    UpdateDrives();
-                    return;
-                }
-
                 if (tabControl1.SelectedTab == tabPageRamDisk)
                     Worker.RamDiskISOWorkerStart();
-                // else...
+                else
+                    MessageBox.Show("Wrong selection", "Reactofus");
             }
             else
             {
@@ -211,9 +201,6 @@ namespace Reactofus
             Environment.Exit(0);
         }
 
-        private void cbAvailableDevices_DropDown(object sender, EventArgs e)
-            => UpdateDrives();
-
         private void btnGitHub_Click(object sender, EventArgs e)
             => Process.Start("https://github.com/feel-the-dz3n/Reactofus");
 
@@ -222,5 +209,19 @@ namespace Reactofus
 
         private void btnSettings_Click(object sender, EventArgs e)
             => new FormSettings().ShowDialog();
+
+        private void linkSetDrive_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var d = new FormDriveSelector();
+
+            if (d.ShowDialog() == DialogResult.OK)
+                SelectedDrive = d.SelectedDrive;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (Environment.OSVersion.Version.Major <= 5 && Environment.OSVersion.Version.Minor <= 1)
+                MessageBox.Show("Unsupported Windows version.\r\nWindows Server 2003 required.", "Reactofus", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }

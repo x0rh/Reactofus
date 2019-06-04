@@ -49,13 +49,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultWorker.cs" />
-    <Compile Include="DriveInfoComboBoxItem.cs" />
     <Compile Include="DriveManager.cs" />
+    <Compile Include="FormatManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDriveSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDriveSelector.Designer.cs">
+      <DependentUpon>FormDriveSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSettings.cs">
       <SubType>Form</SubType>
@@ -70,6 +76,9 @@
     <Compile Include="Worker.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDriveSelector.resx">
+      <DependentUpon>FormDriveSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>

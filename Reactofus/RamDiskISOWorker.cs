@@ -9,12 +9,15 @@ namespace Reactofus
 {
     public class RamDiskISOWorker : DefaultWorker
     {
-        DriveInfo drive = Program.SelectedDrive;
+        DriveManagerLogicalDisk drive = Program.SelectedDrive as DriveManagerLogicalDisk;
         FileInfo installerFile;
 
         public RamDiskISOWorker CheckDriveFormat()
         {
-            if (!drive.DriveFormat.Equals("fat32", StringComparison.CurrentCultureIgnoreCase))
+            if (drive == null)
+                throw new Exception("Something went wrong");
+
+            if (!drive.FileSystem.Equals("fat32", StringComparison.CurrentCultureIgnoreCase))
                 throw new Exception("Drive must be formatted in FAT32.");
 
             return null;
@@ -27,7 +30,7 @@ namespace Reactofus
 
             ProcessStartInfo installer = new ProcessStartInfo();
             installer.FileName = installerFile.FullName;
-            installer.Arguments = drive.Name[0] + ":" + " fat32";
+            installer.Arguments = drive.Volume.DriveLetter + " fat32";
             installer.CreateNoWindow = true;
             installer.UseShellExecute = false;
             Process.Start(installer).WaitForExit();
@@ -39,21 +42,21 @@ namespace Reactofus
 
         public RamDiskISOWorker _Copy_FreeLDR_SYS()
         {
-            Program.WriteResourceToFile("Reactofus.Resources.freeldr.sys", Path.Combine(drive.RootDirectory.FullName, "freeldr.sys"));
+            Program.WriteResourceToFile("Reactofus.Resources.freeldr.sys", Path.Combine(drive.Volume.DriveLetter, "freeldr.sys"));
 
             return null;
         }
 
         public RamDiskISOWorker _Create_INI_File()
         {
-            Program.WriteResourceToFile("Reactofus.Resources.freeldr_RAM.ini", Path.Combine(drive.RootDirectory.FullName, "freeldr.ini"));
+            Program.WriteResourceToFile("Reactofus.Resources.freeldr_RAM.ini", Path.Combine(drive.Volume.DriveLetter, "freeldr.ini"));
 
             return null;
         }
 
         public RamDiskISOWorker _Copy_ISO_File()
         {
-            File.Copy(Program.MainWnd.RamDiskISOPath, Path.Combine(drive.RootDirectory.FullName, "reactos.iso"), true);
+            File.Copy(Program.MainWnd.RamDiskISOPath, Path.Combine(drive.Volume.DriveLetter, "reactos.iso"), true);
 
             return null;
         }
