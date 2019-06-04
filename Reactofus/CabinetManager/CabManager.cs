@@ -43,7 +43,7 @@ namespace CabinetManager {
         }
 
         /// <inheritdoc cref="ICabManager.OnProgress"/>
-        public event EventHandler<ICabProgressionEventArgs> OnProgress;
+        public event EventHandlerEx<ICabProgressionEventArgs> OnProgress;
 
         /// <inheritdoc cref="ICabManager.PackFileSet"/>
         public int PackFileSet(IEnumerable<IFileToAddInCab> filesToPackIn) {

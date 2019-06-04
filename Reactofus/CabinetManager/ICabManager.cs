@@ -48,7 +48,7 @@ namespace CabinetManager {
         /// Event published when the archiving process is progressing.
         /// </para>
         /// </summary>
-        event EventHandler<ICabProgressionEventArgs> OnProgress;
+        event EventHandlerEx<ICabProgressionEventArgs> OnProgress;
         
         /// <summary>
         /// <para>

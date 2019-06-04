@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -69,6 +70,7 @@
     <Compile Include="CabinetManager\core\Exceptions\CfCabException.cs" />
     <Compile Include="CabinetManager\core\Exceptions\CfCabFileMissingException.cs" />
     <Compile Include="CabinetManager\core\Exceptions\CfDataCorruptedException.cs" />
+    <Compile Include="CabinetManager\EventHandlerEx.cs" />
     <Compile Include="CabinetManager\ICabManager.cs" />
     <Compile Include="CabinetManager\ICabProgressionEventArgs.cs" />
     <Compile Include="CabinetManager\IFileCabBase.cs" />

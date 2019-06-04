@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageRamDisk = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnBrowseISORamDisk = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbRamDiskISOPath = new System.Windows.Forms.TextBox();
             this.tabPageMore = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBugReport = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnGitHub = new System.Windows.Forms.Button();
+            this.tabPageRamDisk = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnBrowseISORamDisk = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbRamDiskISOPath = new System.Windows.Forms.TextBox();
             this.btnStartStop = new System.Windows.Forms.Button();
             this.cbPause = new System.Windows.Forms.CheckBox();
             this.cbFormatDrive = new System.Windows.Forms.CheckBox();
@@ -48,9 +48,10 @@
             this.statusProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.linkSetDrive = new System.Windows.Forms.LinkLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabPageRamDisk.SuspendLayout();
             this.tabPageMore.SuspendLayout();
+            this.tabPageRamDisk.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,8 +65,66 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(560, 213);
+            this.tabControl1.Size = new System.Drawing.Size(536, 253);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPageMore
+            // 
+            this.tabPageMore.Controls.Add(this.label4);
+            this.tabPageMore.Controls.Add(this.label1);
+            this.tabPageMore.Controls.Add(this.btnBugReport);
+            this.tabPageMore.Controls.Add(this.btnSettings);
+            this.tabPageMore.Controls.Add(this.btnGitHub);
+            this.tabPageMore.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMore.Name = "tabPageMore";
+            this.tabPageMore.Size = new System.Drawing.Size(528, 227);
+            this.tabPageMore.TabIndex = 1;
+            this.tabPageMore.Text = "Main";
+            this.tabPageMore.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(0, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(528, 23);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Reactofus";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnBugReport
+            // 
+            this.btnBugReport.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBugReport.Location = new System.Drawing.Point(209, 133);
+            this.btnBugReport.Name = "btnBugReport";
+            this.btnBugReport.Size = new System.Drawing.Size(112, 23);
+            this.btnBugReport.TabIndex = 13;
+            this.btnBugReport.Text = "Report a bug";
+            this.btnBugReport.UseVisualStyleBackColor = true;
+            this.btnBugReport.Click += new System.EventHandler(this.btnBugReport_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSettings.Location = new System.Drawing.Point(209, 66);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(112, 23);
+            this.btnSettings.TabIndex = 12;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // btnGitHub
+            // 
+            this.btnGitHub.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGitHub.Location = new System.Drawing.Point(209, 104);
+            this.btnGitHub.Name = "btnGitHub";
+            this.btnGitHub.Size = new System.Drawing.Size(112, 23);
+            this.btnGitHub.TabIndex = 11;
+            this.btnGitHub.Text = "GitHub Repo";
+            this.btnGitHub.UseVisualStyleBackColor = true;
+            this.btnGitHub.Click += new System.EventHandler(this.btnGitHub_Click);
             // 
             // tabPageRamDisk
             // 
@@ -120,67 +179,10 @@
             this.tbRamDiskISOPath.Size = new System.Drawing.Size(502, 20);
             this.tbRamDiskISOPath.TabIndex = 0;
             // 
-            // tabPageMore
-            // 
-            this.tabPageMore.Controls.Add(this.label1);
-            this.tabPageMore.Controls.Add(this.btnBugReport);
-            this.tabPageMore.Controls.Add(this.btnSettings);
-            this.tabPageMore.Controls.Add(this.btnGitHub);
-            this.tabPageMore.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMore.Name = "tabPageMore";
-            this.tabPageMore.Size = new System.Drawing.Size(552, 187);
-            this.tabPageMore.TabIndex = 1;
-            this.tabPageMore.Text = "Main";
-            this.tabPageMore.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(0, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(552, 23);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Reactofus";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnBugReport
-            // 
-            this.btnBugReport.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBugReport.Location = new System.Drawing.Point(221, 131);
-            this.btnBugReport.Name = "btnBugReport";
-            this.btnBugReport.Size = new System.Drawing.Size(112, 23);
-            this.btnBugReport.TabIndex = 13;
-            this.btnBugReport.Text = "Report a bug";
-            this.btnBugReport.UseVisualStyleBackColor = true;
-            this.btnBugReport.Click += new System.EventHandler(this.btnBugReport_Click);
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSettings.Location = new System.Drawing.Point(221, 64);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(112, 23);
-            this.btnSettings.TabIndex = 12;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
-            // btnGitHub
-            // 
-            this.btnGitHub.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGitHub.Location = new System.Drawing.Point(221, 102);
-            this.btnGitHub.Name = "btnGitHub";
-            this.btnGitHub.Size = new System.Drawing.Size(112, 23);
-            this.btnGitHub.TabIndex = 11;
-            this.btnGitHub.Text = "GitHub Repo";
-            this.btnGitHub.UseVisualStyleBackColor = true;
-            this.btnGitHub.Click += new System.EventHandler(this.btnGitHub_Click);
-            // 
             // btnStartStop
             // 
             this.btnStartStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStartStop.Location = new System.Drawing.Point(493, 231);
+            this.btnStartStop.Location = new System.Drawing.Point(469, 271);
             this.btnStartStop.Name = "btnStartStop";
             this.btnStartStop.Size = new System.Drawing.Size(75, 23);
             this.btnStartStop.TabIndex = 2;
@@ -192,7 +194,7 @@
             // 
             this.cbPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbPause.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cbPause.Location = new System.Drawing.Point(457, 231);
+            this.cbPause.Location = new System.Drawing.Point(433, 271);
             this.cbPause.Name = "cbPause";
             this.cbPause.Size = new System.Drawing.Size(30, 23);
             this.cbPause.TabIndex = 4;
@@ -204,7 +206,7 @@
             // 
             this.cbFormatDrive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFormatDrive.AutoSize = true;
-            this.cbFormatDrive.Location = new System.Drawing.Point(393, 235);
+            this.cbFormatDrive.Location = new System.Drawing.Point(369, 275);
             this.cbFormatDrive.Name = "cbFormatDrive";
             this.cbFormatDrive.Size = new System.Drawing.Size(58, 17);
             this.cbFormatDrive.TabIndex = 8;
@@ -216,16 +218,16 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tbStatus,
             this.statusProgress});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 259);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 299);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(584, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(560, 22);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // tbStatus
             // 
             this.tbStatus.Name = "tbStatus";
-            this.tbStatus.Size = new System.Drawing.Size(422, 17);
+            this.tbStatus.Size = new System.Drawing.Size(398, 17);
             this.tbStatus.Spring = true;
             this.tbStatus.Text = "Ready";
             this.tbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -240,7 +242,7 @@
             // 
             this.linkSetDrive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkSetDrive.AutoSize = true;
-            this.linkSetDrive.Location = new System.Drawing.Point(9, 236);
+            this.linkSetDrive.Location = new System.Drawing.Point(9, 276);
             this.linkSetDrive.Name = "linkSetDrive";
             this.linkSetDrive.Size = new System.Drawing.Size(85, 13);
             this.linkSetDrive.TabIndex = 10;
@@ -249,11 +251,22 @@
             this.toolTip1.SetToolTip(this.linkSetDrive, "Click to change...");
             this.linkSetDrive.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSetDrive_LinkClicked);
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Location = new System.Drawing.Point(3, 169);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(522, 40);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Reactofus uses some licensed products:\r\nCabinetManager - Copyright (c) 2018 Julie" +
+    "n Caillon";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 281);
+            this.ClientSize = new System.Drawing.Size(560, 321);
             this.Controls.Add(this.linkSetDrive);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.cbFormatDrive);
@@ -267,9 +280,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPageMore.ResumeLayout(false);
             this.tabPageRamDisk.ResumeLayout(false);
             this.tabPageRamDisk.PerformLayout();
-            this.tabPageMore.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -298,6 +311,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkSetDrive;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label4;
     }
 }
 
