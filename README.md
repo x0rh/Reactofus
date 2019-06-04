@@ -1,10 +1,10 @@
-# Reactofus - [ReactOS](https://github.com/reactos/reactos) :heart: USB ![build](https://travis-ci.com/feel-the-dz3n/Reactofus.svg?branch=master)
-Tool to deploy ReactOS on a USB drive.
+# Reactofus ![build](https://travis-ci.com/feel-the-dz3n/Reactofus.svg?branch=master)
+Tool to deploy ReactOS on fixed or removable drives.
 
 ![image](https://user-images.githubusercontent.com/25367511/58763225-ccbffe80-8560-11e9-8b2f-c57ab494d908.png)
 
 ## Requirements
-- Windows XP
+- Windows Server 2003
 - .NET Framework 4.0
 
 ## Features
