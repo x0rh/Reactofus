@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageMore = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBugReport = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.statusProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.linkSetDrive = new System.Windows.Forms.LinkLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageMore.SuspendLayout();
             this.tabPageRamDisk.SuspendLayout();
@@ -81,6 +81,17 @@
             this.tabPageMore.TabIndex = 1;
             this.tabPageMore.Text = "Main";
             this.tabPageMore.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Location = new System.Drawing.Point(3, 169);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(522, 40);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Reactofus uses some licensed products:\r\nCabinetManager - Copyright (c) 2018 Julie" +
+    "n Caillon";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label1
             // 
@@ -135,7 +146,7 @@
             this.tabPageRamDisk.Location = new System.Drawing.Point(4, 22);
             this.tabPageRamDisk.Name = "tabPageRamDisk";
             this.tabPageRamDisk.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRamDisk.Size = new System.Drawing.Size(552, 187);
+            this.tabPageRamDisk.Size = new System.Drawing.Size(528, 227);
             this.tabPageRamDisk.TabIndex = 0;
             this.tabPageRamDisk.Text = "Create bootable drive with RamDisk ISO";
             this.tabPageRamDisk.UseVisualStyleBackColor = true;
@@ -143,9 +154,9 @@
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Location = new System.Drawing.Point(0, 111);
+            this.label3.Location = new System.Drawing.Point(0, 129);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(552, 26);
+            this.label3.Size = new System.Drawing.Size(525, 26);
             this.label3.TabIndex = 3;
             this.label3.Text = "Required file system: FAT32";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -153,7 +164,7 @@
             // btnBrowseISORamDisk
             // 
             this.btnBrowseISORamDisk.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnBrowseISORamDisk.Location = new System.Drawing.Point(514, 73);
+            this.btnBrowseISORamDisk.Location = new System.Drawing.Point(493, 91);
             this.btnBrowseISORamDisk.Name = "btnBrowseISORamDisk";
             this.btnBrowseISORamDisk.Size = new System.Drawing.Size(32, 23);
             this.btnBrowseISORamDisk.TabIndex = 2;
@@ -165,7 +176,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 59);
+            this.label2.Location = new System.Drawing.Point(6, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(175, 13);
             this.label2.TabIndex = 1;
@@ -174,9 +185,9 @@
             // tbRamDiskISOPath
             // 
             this.tbRamDiskISOPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbRamDiskISOPath.Location = new System.Drawing.Point(6, 75);
+            this.tbRamDiskISOPath.Location = new System.Drawing.Point(6, 93);
             this.tbRamDiskISOPath.Name = "tbRamDiskISOPath";
-            this.tbRamDiskISOPath.Size = new System.Drawing.Size(502, 20);
+            this.tbRamDiskISOPath.Size = new System.Drawing.Size(481, 20);
             this.tbRamDiskISOPath.TabIndex = 0;
             // 
             // btnStartStop
@@ -250,17 +261,6 @@
             this.linkSetDrive.Text = "[0] Disk - 500GB";
             this.toolTip1.SetToolTip(this.linkSetDrive, "Click to change...");
             this.linkSetDrive.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSetDrive_LinkClicked);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Location = new System.Drawing.Point(3, 169);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(522, 40);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Reactofus uses some licensed products:\r\nCabinetManager - Copyright (c) 2018 Julie" +
-    "n Caillon";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Form1
             // 
