@@ -13,3 +13,6 @@ Tool to deploy ReactOS on fixed or removable drives.
 
 ## Credits
 [Dz3n - Yaroslav Kibysh](https://github.com/feel-the-dz3n)
+
+
+CabinetManager - Copyright (c) 2018 Julien Caillon
