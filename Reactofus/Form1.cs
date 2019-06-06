@@ -87,7 +87,7 @@ namespace Reactofus
             Program.MainWnd = this;
 
             InitializeComponent();
-            this.Text = $"Reactofus v{version}";
+            this.Text = $"Reactofus by Dz3n v{version}";
 
             SelectedDrive = null;
         }
