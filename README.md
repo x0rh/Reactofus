@@ -1,7 +1,7 @@
 # Reactofus ![build](https://travis-ci.com/feel-the-dz3n/Reactofus.svg?branch=master)
 Tool to deploy ReactOS on fixed or removable drives.
 
-![image](https://user-images.githubusercontent.com/25367511/58763225-ccbffe80-8560-11e9-8b2f-c57ab494d908.png)
+![image](https://user-images.githubusercontent.com/25367511/59030578-05feb400-886a-11e9-9ec0-9f4172c068bf.png)
 
 ## Requirements
 - Windows Server 2003
