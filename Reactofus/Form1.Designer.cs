@@ -72,8 +72,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPageMore);
-            this.tabControl1.Controls.Add(this.tabPageInstallReactOS);
             this.tabControl1.Controls.Add(this.tabPageRamDisk);
+            this.tabControl1.Controls.Add(this.tabPageInstallReactOS);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
