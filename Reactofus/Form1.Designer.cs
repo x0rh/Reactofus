@@ -37,12 +37,14 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnGitHub = new System.Windows.Forms.Button();
             this.tabPageInstallReactOS = new System.Windows.Forms.TabPage();
-            this.cbReactOSEditions = new System.Windows.Forms.ComboBox();
-            this.lblInstallReactOSStatus = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnBrowseInsatallReactOS = new System.Windows.Forms.Button();
+            this.cbEnableBetaInstall = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.cbReactOSEditions = new System.Windows.Forms.ComboBox();
             this.tbPathInstallReactOS = new System.Windows.Forms.TextBox();
+            this.lblInstallReactOSStatus = new System.Windows.Forms.Label();
+            this.btnBrowseInsatallReactOS = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPageRamDisk = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBrowseISORamDisk = new System.Windows.Forms.Button();
@@ -56,14 +58,12 @@
             this.statusProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.linkSetDrive = new System.Windows.Forms.LinkLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.cbEnableBetaInstall = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPageMore.SuspendLayout();
             this.tabPageInstallReactOS.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tabPageRamDisk.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -160,6 +160,44 @@
             this.tabPageInstallReactOS.Text = "Install ReactOS (WIP)";
             this.tabPageInstallReactOS.UseVisualStyleBackColor = true;
             // 
+            // cbEnableBetaInstall
+            // 
+            this.cbEnableBetaInstall.AutoSize = true;
+            this.cbEnableBetaInstall.Location = new System.Drawing.Point(6, 12);
+            this.cbEnableBetaInstall.Name = "cbEnableBetaInstall";
+            this.cbEnableBetaInstall.Size = new System.Drawing.Size(122, 17);
+            this.cbEnableBetaInstall.TabIndex = 11;
+            this.cbEnableBetaInstall.Text = "Enable beta content";
+            this.cbEnableBetaInstall.UseVisualStyleBackColor = true;
+            this.cbEnableBetaInstall.CheckedChanged += new System.EventHandler(this.CbEnableBetaInstall_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.cbReactOSEditions);
+            this.panel1.Controls.Add(this.tbPathInstallReactOS);
+            this.panel1.Controls.Add(this.lblInstallReactOSStatus);
+            this.panel1.Controls.Add(this.btnBrowseInsatallReactOS);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Enabled = false;
+            this.panel1.Location = new System.Drawing.Point(0, 35);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(528, 192);
+            this.panel1.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(171, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "ReactOS Installation/LiveCD Files:";
+            // 
             // cbReactOSEditions
             // 
             this.cbReactOSEditions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -168,6 +206,15 @@
             this.cbReactOSEditions.Name = "cbReactOSEditions";
             this.cbReactOSEditions.Size = new System.Drawing.Size(519, 21);
             this.cbReactOSEditions.TabIndex = 9;
+            // 
+            // tbPathInstallReactOS
+            // 
+            this.tbPathInstallReactOS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPathInstallReactOS.Location = new System.Drawing.Point(6, 60);
+            this.tbPathInstallReactOS.Name = "tbPathInstallReactOS";
+            this.tbPathInstallReactOS.Size = new System.Drawing.Size(481, 20);
+            this.tbPathInstallReactOS.TabIndex = 4;
+            this.tbPathInstallReactOS.TextChanged += new System.EventHandler(this.TbPathInstallReactOS_TextChanged);
             // 
             // lblInstallReactOSStatus
             // 
@@ -180,16 +227,6 @@
             this.lblInstallReactOSStatus.TabIndex = 8;
             this.lblInstallReactOSStatus.Text = "Choose path";
             // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.Location = new System.Drawing.Point(2, 133);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(523, 26);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Required file system: FAT32";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // btnBrowseInsatallReactOS
             // 
             this.btnBrowseInsatallReactOS.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -201,24 +238,15 @@
             this.btnBrowseInsatallReactOS.UseVisualStyleBackColor = true;
             this.btnBrowseInsatallReactOS.Click += new System.EventHandler(this.BtnBrowseInsatallReactOS_Click);
             // 
-            // label6
+            // label5
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(171, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "ReactOS Installation/LiveCD Files:";
-            // 
-            // tbPathInstallReactOS
-            // 
-            this.tbPathInstallReactOS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPathInstallReactOS.Location = new System.Drawing.Point(6, 60);
-            this.tbPathInstallReactOS.Name = "tbPathInstallReactOS";
-            this.tbPathInstallReactOS.Size = new System.Drawing.Size(481, 20);
-            this.tbPathInstallReactOS.TabIndex = 4;
-            this.tbPathInstallReactOS.TextChanged += new System.EventHandler(this.TbPathInstallReactOS_TextChanged);
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Location = new System.Drawing.Point(2, 133);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(523, 26);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Required file system: FAT32";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tabPageRamDisk
             // 
@@ -345,34 +373,6 @@
             this.toolTip1.SetToolTip(this.linkSetDrive, "Click to change...");
             this.linkSetDrive.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSetDrive_LinkClicked);
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.cbReactOSEditions);
-            this.panel1.Controls.Add(this.tbPathInstallReactOS);
-            this.panel1.Controls.Add(this.lblInstallReactOSStatus);
-            this.panel1.Controls.Add(this.btnBrowseInsatallReactOS);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Enabled = false;
-            this.panel1.Location = new System.Drawing.Point(0, 35);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(528, 192);
-            this.panel1.TabIndex = 10;
-            // 
-            // cbEnableBetaInstall
-            // 
-            this.cbEnableBetaInstall.AutoSize = true;
-            this.cbEnableBetaInstall.Location = new System.Drawing.Point(6, 12);
-            this.cbEnableBetaInstall.Name = "cbEnableBetaInstall";
-            this.cbEnableBetaInstall.Size = new System.Drawing.Size(122, 17);
-            this.cbEnableBetaInstall.TabIndex = 11;
-            this.cbEnableBetaInstall.Text = "Enable beta content";
-            this.cbEnableBetaInstall.UseVisualStyleBackColor = true;
-            this.cbEnableBetaInstall.CheckedChanged += new System.EventHandler(this.CbEnableBetaInstall_CheckedChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,19 +387,19 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reactofus";
+            this.Text = "Reactofus by Dz3n";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageMore.ResumeLayout(false);
             this.tabPageInstallReactOS.ResumeLayout(false);
             this.tabPageInstallReactOS.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tabPageRamDisk.ResumeLayout(false);
             this.tabPageRamDisk.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
