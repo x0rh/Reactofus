@@ -15,4 +15,6 @@ Tool to deploy ReactOS on fixed or removable drives.
 [Dz3n - Yaroslav Kibysh](https://github.com/feel-the-dz3n)
 
 
-CabinetManager - Copyright (c) 2018 Julien Caillon
+Reactofus uses some licensed products:
+- Cab Compression
+**Copyright (c) 1999, Microsoft Corporation.  All rights reserved.**
