@@ -13,8 +13,13 @@ namespace Reactofus
 {
     public class Worker
     {
+        public static void RamDiskISOWorkerStart() => new Thread(() => WorkerStart(new RamDiskISOWorker())).Start();
+        public static void InstallROSWorkerStart() => new Thread(() => WorkerStart(new InstallReactOSWorker())).Start();
+
         private static void WorkerStart(DefaultWorker worker)
         {
+            Thread.CurrentThread.Priority = ThreadPriority.Highest;
+
             Program.MainWnd.Working = true;
 
             var methods = GetMethods(worker).ToArray();
@@ -29,7 +34,7 @@ namespace Reactofus
 
                 try
                 {
-                    Check();
+                    worker.Check();
 
                     methods[i].Invoke(worker, new object[] { });
                 }
@@ -37,6 +42,8 @@ namespace Reactofus
                 {
                     ErrorHandler(ex.InnerException);
                     errorHappened = true;
+
+                    break;
                 }
             }
 
@@ -91,8 +98,6 @@ namespace Reactofus
 
             return a.ToString();
         }
-
-        public static void RamDiskISOWorkerStart() => new Thread(() => WorkerStart(new RamDiskISOWorker())).Start();
 
         private static void Prepare(string driveLabel = "ReactOS")
         {
@@ -166,18 +171,6 @@ namespace Reactofus
             //{
             //    Program.MainWnd.SelectedDrive.VolumeLabel = driveLabel;
             //}));
-        }
-
-        private static void Check()
-        {
-            if(Program.MainWnd.ProgressPaused)
-            {
-                while (Program.MainWnd.ProgressPaused)
-                    Thread.Sleep(500);
-            }
-
-            if (Program.MainWnd.Aborted)
-                throw new Exception("Aborted.");
         }
 
         private static void Done()

@@ -31,6 +31,17 @@ namespace Reactofus
             }
         }
 
+        public ROSInstallEdition Edition
+        {
+            get
+            {
+                if (InvokeRequired)
+                    return (ROSInstallEdition)this.Invoke(new Func<ROSInstallEdition>(() => Edition));
+
+                return (ROSInstallEdition)cbReactOSEditions.SelectedItem;
+            }
+        }
+
 
         public bool Aborted = false;
 
@@ -160,6 +171,8 @@ namespace Reactofus
             {
                 if (tabControl1.SelectedTab == tabPageRamDisk)
                     Worker.RamDiskISOWorkerStart();
+                else if (tabControl1.SelectedTab == tabPageInstallReactOS && cbEnableBetaInstall.Checked)
+                    Worker.InstallROSWorkerStart();
                 else
                     MessageBox.Show("Wrong selection", "Reactofus");
             }
@@ -223,5 +236,99 @@ namespace Reactofus
             if (Environment.OSVersion.Version.Major <= 5 && Environment.OSVersion.Version.Minor <= 1)
                 MessageBox.Show("Unsupported Windows version.\r\nWindows Server 2003 required.", "Reactofus", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+        private void TbPathInstallReactOS_TextChanged(object sender, EventArgs e)
+        {
+            // Update editions
+            try
+            {
+                cbReactOSEditions.Items.Clear();
+                cbReactOSEditions.SelectedItem = null;
+
+                var path = tbPathInstallReactOS.Text;
+
+                if (path.Length <= 2)
+                {
+                    SetInstallReactOSStatus("Wrong path", false);
+                    return;
+                }
+
+                var ntoskrnlPath = Path.Combine(path, "reactos", "system32", "ntoskrnl.exe");
+                var freeldrPath = Path.Combine(path, "freeldr.ini");
+
+                if (!File.Exists(ntoskrnlPath) &&
+                    !File.Exists(freeldrPath))
+                {
+                    SetInstallReactOSStatus("ReactOS system files not found", false);
+                    return;
+                }
+                else // kernel & boot info found
+                {
+                    List<ROSInstallEdition> Editions = new List<ROSInstallEdition>();
+
+                    // check freeldr.ini to detect bootcd or livecd
+                    var freeldrConfig = new INIParser(freeldrPath);
+
+                    foreach(var section in freeldrConfig.Sections)
+                    {
+                        var IsSetup = section.Name.Equals("Setup", StringComparison.OrdinalIgnoreCase);
+                        var IsLive = section.Name.Equals("LiveCD", StringComparison.OrdinalIgnoreCase);
+
+                        if (IsSetup || IsLive)
+                        {
+                            ROSInstallEdition edition = new ROSInstallEdition(
+                                IsSetup ?
+                                ROSInstallEdition.ROSEdition.Setup :
+                                ROSInstallEdition.ROSEdition.MiniNT,
+                                path);
+
+                            foreach (var row in section.Values)
+                                if (row.Name.Equals("SystemPath", StringComparison.OrdinalIgnoreCase))
+                                    edition.SystemPath = Path.Combine(path, row.Value.TrimStart(new char[] { '\\' }));
+
+                            Editions.Add(edition);
+                        }
+                    }
+
+                    foreach(var edition in Editions)
+                        cbReactOSEditions.Items.Add(edition);
+
+                    cbReactOSEditions.SelectedItem = Editions.First();
+
+                    SetInstallReactOSStatus("Choose edition from the box below", true);
+                }
+            }
+            catch
+            {
+                SetInstallReactOSStatus("Something wrong", false);
+            }
+        }
+
+
+        void SetInstallReactOSStatus(string text, bool isOK)
+        {
+            lblInstallReactOSStatus.Text = text;
+
+            if (!isOK)
+                lblInstallReactOSStatus.ForeColor = Color.DarkRed;
+            else
+                lblInstallReactOSStatus.ForeColor = Color.DarkBlue;
+        }
+
+        private void BtnBrowseInsatallReactOS_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog d = new FolderBrowserDialog())
+            {
+                d.Description = "Choose ReactOS Installation/LiveCD files";
+
+                if (d.ShowDialog() == DialogResult.OK)
+                {
+                    tbPathInstallReactOS.Text = d.SelectedPath;
+                }
+            }
+        }
+
+        private void CbEnableBetaInstall_CheckedChanged(object sender, EventArgs e)
+            => panel1.Enabled = cbEnableBetaInstall.Checked;
     }
 }
