@@ -295,7 +295,7 @@ namespace Reactofus
 
                     cbReactOSEditions.SelectedItem = Editions.First();
 
-                    SetInstallReactOSStatus("Choose edition from the box below", true);
+                    SetInstallReactOSStatus("Choose source from the box below", true);
                 }
             }
             catch
